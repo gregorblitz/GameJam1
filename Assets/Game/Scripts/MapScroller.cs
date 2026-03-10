@@ -13,10 +13,8 @@ public class MapScroller : MonoBehaviour
     {
         for (int i = 0; i < chunks.Length; i++)
         {
-            // Mover hacia Z negativo (hacia el jugador)
             chunks[i].position += Vector3.back * velocidad * Time.deltaTime;
 
-            // Cuando el chunk pasa al jugador, reciclarlo adelante
             if (chunks[i].position.z < -longitudChunk)
             {
                 RecolocarChunk(i);
