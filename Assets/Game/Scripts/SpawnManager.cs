@@ -5,7 +5,8 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject forceFieldOne;
     public GameObject forceFieldTwo;
-
+    public GameObject enemyPrefab; // OVNI  Prefabs
+    private Vector3 spawnPos = new Vector3(0, 0, 30); // Ajusta la Z según tu longitudChunk
     private Vector3 spawnPosOne = new Vector3(0, 150, 15);
     private Vector3 spawnPosTwo = new Vector3(0, 75, 500);
     private float startDelay = 5;
@@ -15,6 +16,7 @@ public class SpawnManager : MonoBehaviour
     {
         InvokeRepeating("SpawnForceFieldOne", startDelay, repeatRate);
         InvokeRepeating("SpawnForceFieldTwo", startDelay, repeatRate);
+        InvokeRepeating("SpawnEnemy", startDelay, repeatRate);//holmes
     }
 
     // Update is called once per frame
@@ -31,5 +33,14 @@ public class SpawnManager : MonoBehaviour
     void SpawnForceFieldTwo()
     {
         Instantiate(forceFieldTwo, spawnPosTwo, forceFieldTwo.transform.rotation);
+    }
+    void SpawnEnemy()
+    {
+        // Genera una posición aleatoria en X para que no siempre aparezcan en el centro
+        float randomX = Random.Range(-20, 20); 
+        Vector3 posAleatoria = new Vector3(randomX, 0, spawnPos.z);
+        
+        // Crea el OVNI en la escena
+        Instantiate(enemyPrefab, posAleatoria, enemyPrefab.transform.rotation);
     }
 }
