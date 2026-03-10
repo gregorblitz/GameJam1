@@ -156,7 +156,7 @@ MonoBehaviour:
     AngularDampingMode: 0
     RotationDamping: {x: 0, y: 0, z: 0}
     QuaternionDamping: 1
-  FollowOffset: {x: 0, y: 0.92, z: -3.84}
+  FollowOffset: {x: 0, y: 1.04, z: -5.56}
 --- !u!114 &252353069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,8 +208,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 252353067}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1173048, y: -0.000000008569662, z: 0.000000012421785, w: 0.993096}
-  m_LocalPosition: {x: 0, y: 0.92, z: -3.84}
+  m_LocalRotation: {x: 0.0923251, y: 0.000000012670101, z: -0.0000000011747866, w: 0.9957289}
+  m_LocalPosition: {x: 0, y: 1.04, z: -5.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -388,8 +388,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11730482, y: -0.0000000072028956, z: 8.5080837e-10, w: 0.993096}
-  m_LocalPosition: {x: 0, y: 0.92, z: -3.84}
+  m_LocalRotation: {x: 0.0923251, y: 0.000000012670101, z: -0.0000000011747858, w: 0.9957289}
+  m_LocalPosition: {x: 0, y: 1.04, z: -5.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -741,6 +741,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 905871732}
+  - {fileID: 1535828350}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1300430798
@@ -787,6 +788,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   speed: 20
   rotationSpeed: 100
+  bulletPrefab: {fileID: 6473421366803564595, guid: c6dabfb98e0c76c46a3057c46890f9d6, type: 3}
+  bulletSpawn: {fileID: 1535828350}
 --- !u!1001 &1358819101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -844,6 +847,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8c0cb1357da0e7409f6b46f58a79905, type: 3}
+--- !u!1 &1535828349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1535828350}
+  m_Layer: 0
+  m_Name: BulletSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1535828350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535828349}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.036, z: 1.004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1300430797}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2119131221
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,32 +1,45 @@
 using UnityEngine;
-using UnityEngine.InputSystem; // Obligatorio para leer los valores
+using UnityEngine.InputSystem; 
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movimiento")]
     public float speed = 20.0f;
     public float rotationSpeed = 100.0f;
 
-    // Aquí guardaremos los datos que nos envíe el Player Input
+    [Header("Disparo")]
+    public GameObject bulletPrefab;    // Para poner prefab bala
+    public Transform bulletSpawn;   // El punto donde va a salir la bala
+    
     private Vector2 moveInput;
 
-    // ¡La magia de Send Messages! 
-    // Unity llama a esta función automáticamente cuando tocas las teclas de movimiento.
     void OnMove(InputValue value)
     {
-        // Extraemos el valor del joystick o teclado (X e Y) y lo guardamos
         moveInput = value.Get<Vector2>();
     }
 
+    // Unity llama a la accion OnFire (Clic izq, Espacio o Gatillo der)
+    void OnAttack(InputValue value)
+    {
+        // Si el boton esta presionado
+        if (value.isPressed)
+        {
+            // Crea copia de la bala, en la posicion y rotacion del punto de disparo
+            Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+        }
+    }
     void Update()
     {
-        // 1. Mover el avión hacia adelante constantemente
+        //Mueve el avion hacia adelante constantemente
         //transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
-        // 2. Aplicar la rotación basada en lo que guardó OnMove
-        // Inclinación (Pitch) con W/S o Flechas Arriba/Abajo
+        //Aplica la rotacion basada en lo que guardo OnMove
+        //Inclinacion (Pitch) con W/S o Flechas Arriba/Abajo (Eje X)
         transform.Rotate(Vector3.right * rotationSpeed * Time.deltaTime * moveInput.y); 
         
-        // Giro (Yaw) con A/D o Flechas Izquierda/Derecha
-        transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime * moveInput.x); 
+        // ---ALABEO!---
+        // Alabeo (Roll) con A/D o Flechas Izquierda/Derecha (Eje Z)
+        // Vector3.back para que baje ala derecha al mover a la derecha
+        transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime * moveInput.x); 
     }
 }
