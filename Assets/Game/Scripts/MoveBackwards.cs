@@ -14,9 +14,17 @@ public class MoveBackwards : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.back * speed * Time.deltaTime);
+        transform.Translate(Vector3.back * speed * Time.deltaTime, Space.World);
 
         if (transform.position.z < backBoundary && gameObject.CompareTag("Obstaculo"))
+        {
+            Destroy(gameObject);
+        }
+        if (transform.position.z < backBoundary && gameObject.CompareTag("Gas"))
+        {
+            Destroy(gameObject);
+        }
+        if (transform.position.z < backBoundary && gameObject.CompareTag("Life"))
         {
             Destroy(gameObject);
         }

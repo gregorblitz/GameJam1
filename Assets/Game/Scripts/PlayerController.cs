@@ -1,45 +1,65 @@
-using UnityEngine;
-using UnityEngine.InputSystem; 
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Movimiento")]
     public float speed = 20.0f;
-    public float rotationSpeed = 100.0f;
+    public float moveSmoothSpeed = 8f;
+
+    [Header("Inclinacion Lateral (Roll)")]
+    public float maxRollAngle = 45f;
+    public float rollSmoothSpeed = 4f;
+
+    [Header("Inclinacion Vertical (Pitch)")]
+    public float maxPitchAngle = 45f;
+    public float pitchSmoothSpeed = 4f;
+
+    [Header("Limites del Mapa")]
+    public float minY = 10f;
+    public float maxY = 200f;
+    public float minX = -150f;
+    public float maxX = 150f;
 
     [Header("Disparo")]
-    public GameObject bulletPrefab;    // Para poner prefab bala
-    public Transform bulletSpawn;   // El punto donde va a salir la bala
-    
+    public GameObject bulletPrefab;
+    public Transform bulletSpawn;
+
     private Vector2 moveInput;
+    private Vector2 smoothedInput;
+    private float currentRoll = 0f;
+    private float currentPitch = 0f;
 
     void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
     }
 
-    // Unity llama a la accion OnFire (Clic izq, Espacio o Gatillo der)
     void OnAttack(InputValue value)
     {
-        // Si el boton esta presionado
         if (value.isPressed)
         {
-            // Crea copia de la bala, en la posicion y rotacion del punto de disparo
-            Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+            Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
         }
     }
+
     void Update()
     {
-        //Mueve el avion hacia adelante constantemente
-        //transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        smoothedInput = Vector2.Lerp(smoothedInput, moveInput, Time.deltaTime * moveSmoothSpeed);
 
-        //Aplica la rotacion basada en lo que guardo OnMove
-        //Inclinacion (Pitch) con W/S o Flechas Arriba/Abajo (Eje X)
-        transform.Rotate(Vector3.right * rotationSpeed * Time.deltaTime * moveInput.y); 
-        
-        // ---ALABEO!---
-        // Alabeo (Roll) con A/D o Flechas Izquierda/Derecha (Eje Z)
-        // Vector3.back para que baje ala derecha al mover a la derecha
-        transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime * moveInput.x); 
+        transform.Translate(Vector3.right * speed * Time.deltaTime * smoothedInput.x, Space.World);
+        transform.Translate(Vector3.up * speed * Time.deltaTime * smoothedInput.y, Space.World);
+
+        float clampX = Mathf.Clamp(transform.position.x, minX, maxX);
+        float clampY = Mathf.Clamp(transform.position.y, minY, maxY);
+        transform.position = new Vector3(clampX, clampY, transform.position.z);
+
+        float targetRoll = smoothedInput.x * maxRollAngle;
+        currentRoll = Mathf.Lerp(currentRoll, targetRoll, Time.deltaTime * rollSmoothSpeed);
+
+        float targetPitch = smoothedInput.y * maxPitchAngle;
+        currentPitch = Mathf.Lerp(currentPitch, targetPitch, Time.deltaTime * pitchSmoothSpeed);
+
+        transform.rotation = Quaternion.Euler(-90f + currentPitch, 180f, currentRoll);
     }
 }
