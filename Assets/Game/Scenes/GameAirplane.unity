@@ -201,7 +201,7 @@ MonoBehaviour:
   forceFieldOne: {fileID: 1848880975443764643, guid: 9b9b32abf77a0ec4ca4398f18464eb83, type: 3}
   forceFieldTwo: {fileID: 172891398787535014, guid: 3bab98ac3f2930f4e887658c37fa00a7, type: 3}
   gasoline: {fileID: 3035293199224184206, guid: 5bdb0c81d5d6ae647b728452664a9546, type: 3}
-  life: {fileID: 6579310766365545458, guid: f490dc0c1ceb99044a7bd572c34496ad, type: 3}
+  life: {fileID: 8616871875778493580, guid: 644c82e0979ab9340b1f06a5c7f0bc86, type: 3}
 --- !u!4 &146753613
 Transform:
   m_ObjectHideFlags: 0
