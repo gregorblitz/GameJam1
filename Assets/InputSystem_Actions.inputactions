@@ -324,7 +324,7 @@
                     "name": "",
                     "id": "a0f166be-4d87-4942-b32d-10627af747e5",
                     "path": "<Keyboard>/space",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
