@@ -5,7 +5,7 @@ public class FuelSystem : MonoBehaviour
 {
     public float maxFuel = 100f;
     public float currentFuel;
-    public float fuelDrainRate = 0.5f;
+    public float fuelDrainRate = 1f;
 
     public Slider fuelSlider;
 
