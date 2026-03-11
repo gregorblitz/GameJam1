@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class TutorialManager : MonoBehaviour
+public class PresentacionEquipo : MonoBehaviour
 {
     [Header("Panel Bienvenida")]
     public GameObject panelBienvenida;
@@ -25,21 +25,18 @@ public class TutorialManager : MonoBehaviour
     public float tiempoFade = 0.6f;
 
     private string[] titulos = {
-        "Controles",
-        "¡Defiende!",
-        "Gasolina",
-        "Vidas",
-        "Potencia",
-        "Pausa"
+        "Christian Nuñez",
+        "Ricardo Patiño",
+        "Santiago Cortazar",
+        "Holmes Garces",
+        
     };
 
     private string[] descripciones = {
-        "Usa  W A S D  para mover tu avión\ny  ESPACIO  para disparar",
-        "¡No permitas que los OVNIs\ncruzen tu línea de defensa!",
-        "Vigila la barra de gasolina.\nRecoge  garrafones  antes de quedarte vacío",
-        "¿Perdiste vidas?\nRecoge  botiquines  para recuperar una",
-        "Recoge  municiones  en el mapa\npara aumentar tu cadencia de disparo",
-        "Presiona  P  para pausar\nel juego en cualquier momento"
+        "Programmer, UI",
+        "Gameplay Programmer, Tech Art",
+        "Gameplay Programmer",
+        "Gameplay Programmer"
     };
 
     private int tarjetaActual = 0;
