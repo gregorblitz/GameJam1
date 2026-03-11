@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class PlayerController : MonoBehaviour
 {
     [Header("Movimiento")]
@@ -26,9 +25,12 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
 
-    public float fireRate = 0.5f;     // Tiempo entre balas
-    private float nextFire = 0f;      // Cronómetro interno
-    private bool isAttacking = false; // UEVA: Estado del botón
+    public float fireRate = 0.5f;
+    private float nextFire = 0f;
+    private bool isAttacking = false;
+
+    // Umbral: si fireRate es menor a este valor se considera metralleta
+    private float metralletaThreshold = 0.2f;
 
     private Vector2 moveInput;
     private Vector2 smoothedInput;
@@ -42,7 +44,6 @@ public class PlayerController : MonoBehaviour
 
     void OnAttack(InputValue value)
     {
-        // Esto se vuelve true al presionar y false al soltar
         isAttacking = value.isPressed;
     }
 
@@ -65,11 +66,19 @@ public class PlayerController : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(-90f + currentPitch, 180f, currentRoll);
 
-        // Si esta oprimido boton (atacando) y ya paso el tiempo de espera (fireRate)
         if (isAttacking && Time.time > nextFire)
         {
-            nextFire = Time.time + fireRate; // Programamos el siguiente disparo
+            nextFire = Time.time + fireRate;
             Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+
+            // Sonido: metralleta si fireRate es bajo, normal si es alto
+            if (AudioManager.Instance != null)
+            {
+                if (fireRate < metralletaThreshold)
+                    AudioManager.Instance.PlayDisparoMetralleta();
+                else
+                    AudioManager.Instance.PlayDisparoNormal();
+            }
         }
     }
 
@@ -81,10 +90,10 @@ public class PlayerController : MonoBehaviour
     private System.Collections.IEnumerator AmmoBoostRoutine(float fastRate, float duration)
     {
         float originalRate = fireRate;
-        fireRate = fastRate; // aumenta la cadencia de disparo
-        
+        fireRate = fastRate;
+
         yield return new WaitForSeconds(duration);
-        
-        fireRate = originalRate; // Al terminar el tiempo, vuelve a la normalidad
+
+        fireRate = originalRate;
     }
 }

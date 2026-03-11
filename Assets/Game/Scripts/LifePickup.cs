@@ -2,17 +2,21 @@ using UnityEngine;
 
 public class LifePickup : MonoBehaviour
 {
-    public GameObject lifeEffect; // Arrastra FX_Life aquí en el Inspector
+    // Ajusta según tu sistema de vidas
+    public int lifeAmount = 1;
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (lifeEffect != null)
-            {
-                Vector3 spawnPos = transform.position; // Guarda posición antes de destruir
-                Instantiate(lifeEffect, spawnPos, Quaternion.identity);
-            }
+            // Aquí conectas con tu sistema de vidas cuando lo tengas
+            // Ejemplo: other.GetComponent<HealthSystem>()?.AddLife(lifeAmount);
+
+            // Sonido vida
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlayAgarrarVida();
+
+            Debug.Log("¡Vida recogida!");
             Destroy(gameObject);
         }
     }
