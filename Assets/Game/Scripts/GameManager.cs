@@ -8,6 +8,11 @@ public class GameManager : MonoBehaviour
 
     public bool isGameActive;
 
+    [Header("Textos Puntuación")]
+    public TextMeshProUGUI finalScoreText; // Texto para el puntaje de esta partida
+    public TextMeshProUGUI highScoreText;  // Texto para el record historico
+
+    [Header("Paneles UI")]
     public GameObject gameOverPanel;
     public GameObject pausePanel;
     private bool paused;
@@ -49,6 +54,38 @@ public class GameManager : MonoBehaviour
         AudioManager.Instance.StopAllAudio();
         Time.timeScale = 0;
         AudioManager.Instance.PlayMusicaGameOver();
+
+        //SISTEMA HIGH SCORE
+        //Busca al jugador para leer puntos hechos
+        PlayerController player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
+        if (player != null)
+        {
+            int currentScore = player.score; 
+
+            //Lee libreta de Unity para ver el record historico
+            int highScore = PlayerPrefs.GetInt("HighScore", 0);
+
+            // Se hizo un nuevo record?
+            if (currentScore > highScore)
+            {
+                highScore = currentScore; // Actualiza el record por el actual
+                PlayerPrefs.SetInt("HighScore", highScore); // se guarda
+                PlayerPrefs.Save(); // Forzamos escritura en disco duro
+                Debug.Log("¡Nuevo marca alcanzada: " + highScore + "!");
+            }
+
+            // Muestra textos en el Canvas
+            if (finalScoreText != null)
+            {
+                finalScoreText.text = "Puntaje Final: " + currentScore;
+            }
+
+            if (highScoreText != null)
+            {
+                highScoreText.text = "Puntaje Mayor: " + highScore;
+            }
+        }
         
     }
 
