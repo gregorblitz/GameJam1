@@ -31,6 +31,13 @@ public class FuelSystem : MonoBehaviour
         }
     }
 
+    public void AddFuel(float fuelPickupAmount)
+    {
+        currentFuel += fuelPickupAmount;
+        currentFuel = Mathf.Clamp(currentFuel, 0f, maxFuel);
+        UpdateFuelUI();
+    }
+
     void UpdateFuelUI()
     {
         fuelSlider.maxValue = maxFuel;
