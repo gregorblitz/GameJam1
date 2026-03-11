@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
     {
         if (livesText != null)
         {
-            livesText.text = "Vidas: " + currentLives;
+            livesText.text = "Lives: " + currentLives;
         }
     }
 
