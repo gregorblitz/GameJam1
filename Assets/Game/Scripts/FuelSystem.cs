@@ -8,6 +8,7 @@ public class FuelSystem : MonoBehaviour
     public float fuelDrainRate = 1f;
 
     public Slider fuelSlider;
+    private GameManager gameManager;
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class FuelSystem : MonoBehaviour
         fuelSlider.value = maxFuel;
         currentFuel = maxFuel;
         UpdateFuelUI();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
@@ -28,6 +30,8 @@ public class FuelSystem : MonoBehaviour
         if (currentFuel <= 0f)
         {
             Debug.Log("Se acabó el combustible");
+            gameManager.GameOver();
+
         }
     }
 

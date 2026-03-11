@@ -278,6 +278,7 @@ MonoBehaviour:
   gasoline: {fileID: 3035293199224184206, guid: 5bdb0c81d5d6ae647b728452664a9546, type: 3}
   life: {fileID: 8616871875778493580, guid: 644c82e0979ab9340b1f06a5c7f0bc86, type: 3}
   ammo: {fileID: 198976, guid: dbe398fbe3adebc4484ea50382e51ea7, type: 3}
+  enemy: {fileID: 3064659481765940399, guid: 62aad0ac8790a9c49b9d50f22f8f29a6, type: 3}
 --- !u!4 &146753613
 Transform:
   m_ObjectHideFlags: 0
@@ -557,7 +558,7 @@ GameObject:
   - component: {fileID: 998105628}
   - component: {fileID: 998105627}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Game Over Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -579,8 +580,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 75.88156, y: 0}
+  m_SizeDelta: {x: 351.7631, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &998105627
 MonoBehaviour:
@@ -602,7 +603,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOU GOT LOST IN THE DIMENSION
+  m_text: 'GAME OVER
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -894,6 +897,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484496000}
   m_CullTransparentMesh: 1
+--- !u!1 &1526633539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1526633540}
+  - component: {fileID: 1526633541}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1526633540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526633539}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 216.66457, y: 257.38538, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1526633541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526633539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f3e0a816bcea248b930165b8591986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  isGameActive: 0
+  gameOverPanel: {fileID: 682998486}
 --- !u!1 &1619910591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1975,3 +2024,4 @@ SceneRoots:
   - {fileID: 794189439148672954}
   - {fileID: 1949979006}
   - {fileID: 2068032832}
+  - {fileID: 1526633540}

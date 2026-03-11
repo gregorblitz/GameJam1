@@ -40,10 +40,12 @@ public class PlayerController : MonoBehaviour
     private Vector2 smoothedInput;
     private float currentRoll = 0f;
     private float currentPitch = 0f;
+    private GameManager gameManager;
 
     void Start()
     {
-            UpdateLivesUI();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        UpdateLivesUI();
     }
     void OnMove(InputValue value)
     {
@@ -117,7 +119,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     // Quita vidas
-    public void TakeDamage()
+    /*public void TakeDamage()
     {
         currentLives--;
         UpdateLivesUI();
@@ -134,5 +136,14 @@ public class PlayerController : MonoBehaviour
         Debug.Log("¡Juego Terminado!");
         Time.timeScale = 0f; // pausa el juego
         // Espacio para mostrar una pantalla de reinicio
+    }*/
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Obstaculo"))
+        {
+            Debug.Log("¡Colisión con obstáculo!");
+            gameManager.GameOver();
+        }
     }
 }
