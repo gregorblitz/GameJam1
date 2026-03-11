@@ -10,8 +10,10 @@ public class LifePickup : MonoBehaviour
         {
             // Instancia el efecto en la posición del objeto
             if (lifeEffect != null)
+            {
+                Vector3 spawnPos = transform.position; // Guarda posición antes de destruir
                 Instantiate(lifeEffect, transform.position, Quaternion.identity);
-
+            }
             Destroy(gameObject);
         }
     }
