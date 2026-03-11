@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: START
+  m_text: INICIAR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a5e18a919b3eb6244b2a43d0cb90682d, type: 2}
   m_sharedMaterial: {fileID: -7033178223993287674, guid: a5e18a919b3eb6244b2a43d0cb90682d, type: 2}
@@ -1235,7 +1235,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HOW TO PLAY
+  m_text: INSTRUCCIONES
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a5e18a919b3eb6244b2a43d0cb90682d, type: 2}
   m_sharedMaterial: {fileID: -7033178223993287674, guid: a5e18a919b3eb6244b2a43d0cb90682d, type: 2}

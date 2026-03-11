@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public float maxX = 150f;
 
     [Header("Salud y UI")]
-    public int currentLives = 1;
+    public int currentLives = 5;
     public int maxLives = 5;
     public TextMeshProUGUI livesText;
 
@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
     {
         if (livesText != null)
         {
-            livesText.text = "Lives: " + currentLives;
+            livesText.text = "Vidas: " + currentLives;
         }
     }
 
@@ -126,6 +126,21 @@ public class PlayerController : MonoBehaviour
         {
             currentLives++;
             UpdateLivesUI();
+        }
+    }
+
+    public void LoseLife()
+    {
+        currentLives--;
+
+        if (currentLives < 0)
+            currentLives = 0;
+
+        UpdateLivesUI();
+
+        if (currentLives == 0)
+        {
+            gameManager.GameOver();
         }
     }
     // Quita vidas

@@ -5,10 +5,11 @@ public class MoveBackwards : MonoBehaviour
 
     public float speed = 300f;
     private float backBoundary = -3000f;
+    private PlayerController player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        player = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -27,6 +28,16 @@ public class MoveBackwards : MonoBehaviour
         if (transform.position.z < backBoundary && gameObject.CompareTag("Life"))
         {
             Destroy(gameObject);
+        }
+        if (transform.position.z < backBoundary && gameObject.CompareTag("Enemigo"))
+        {
+            if (player != null){    
+                player.LoseLife();
+                Destroy(gameObject);
+            } else
+            {
+                Debug.LogWarning("PlayerController no encontrado desde MoveBackwards");
+            }
         }
     }
 }

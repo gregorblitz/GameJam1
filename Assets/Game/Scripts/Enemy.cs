@@ -4,6 +4,7 @@ public class Enemy : MonoBehaviour
 {
     private int hitCount = 0;
     private int hitsToDestroy = 2;
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,7 +21,7 @@ public class Enemy : MonoBehaviour
                 if (AudioManager.Instance != null)
                     AudioManager.Instance.PlayDestruccionEnemigo();
 
-                Debug.Log("¡Enemigo destruido!");
+                Debug.Log("ï¿½Enemigo destruido!");
                 Destroy(gameObject);
             }
         }

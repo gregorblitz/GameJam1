@@ -150,4 +150,11 @@ public class AudioManager : MonoBehaviour
         if (clip == null) return;
         sfxSource.PlayOneShot(clip, volumen);
     }
+
+    public void StopAllAudio()
+    {
+        musicaSource.Stop();
+        motorSource.Stop();
+        sfxSource.Stop();
+    }
 }
