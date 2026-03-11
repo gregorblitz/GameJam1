@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
     public int maxLives = 5;
     public TextMeshProUGUI livesText;
 
+    // VARIABLES DE PUNTOS
+    public int score = 0;
+    public TextMeshProUGUI scoreText;
+
     [Header("Disparo")]
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
@@ -49,6 +53,7 @@ public class PlayerController : MonoBehaviour
     {
         UpdateLivesUI();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        UpdateScoreUI(); //Puntuacion
     } 
     void OnMove(InputValue value)
     {
@@ -168,6 +173,21 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("¡Colisión con obstáculo!");
             gameManager.GameOver();
+        }
+    }
+    // Suma puntos (llamado por los enemigos al morir)
+    public void AddScore(int pointsToAdd)
+    {
+        score += pointsToAdd;
+        UpdateScoreUI();
+    }
+
+    // Actualiza el texto en la pantalla
+    private void UpdateScoreUI()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = "Puntos: " + score;
         }
     }
 }
