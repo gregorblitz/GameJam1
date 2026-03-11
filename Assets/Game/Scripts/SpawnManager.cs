@@ -48,13 +48,11 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnEnemy()
     {
-        // Genera una posición aleatoria en X
-        float randomX = Random.Range(-20, 20); 
-        Vector3 posAleatoria = new Vector3(randomX, 0, spawnPos.z);
-        
-        // Crea el OVNI en la escena
+    // Aumenta el rango de -15, 15 a uno que cubra todo el carril
+        float randomX = Random.Range(-25, 25); 
+        Vector3 posAleatoria = new Vector3(randomX, 1, 100); 
         Instantiate(enemyPrefab, posAleatoria, enemyPrefab.transform.rotation);
-    } // <--- AQUÍ FALTABA ESTA LLAVE
+    } 
 
     void SpawnGasoline()
     {

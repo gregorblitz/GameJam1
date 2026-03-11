@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 146753612}
   m_Layer: 0
   m_Name: SpawnManager
-  m_TagString: Untagged
+  m_TagString: SpawnEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,9 +200,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
   forceFieldOne: {fileID: 1848880975443764643, guid: 9b9b32abf77a0ec4ca4398f18464eb83, type: 3}
   forceFieldTwo: {fileID: 172891398787535014, guid: 3bab98ac3f2930f4e887658c37fa00a7, type: 3}
-  enemyPrefab: {fileID: 413678202888037722, guid: 21290ffd0e3f68d49a08ac1b5996be30, type: 3}
+  enemyPrefab: {fileID: 1746464905336097175, guid: 21290ffd0e3f68d49a08ac1b5996be30, type: 3}
   gasoline: {fileID: 3035293199224184206, guid: 5bdb0c81d5d6ae647b728452664a9546, type: 3}
-  life: {fileID: 8616871875778493580, guid: 644c82e0979ab9340b1f06a5c7f0bc86, type: 3}
+  life: {fileID: -927199367670048503, guid: 5c54f2eb9487c2a47b3548ba22d2c9a2, type: 3}
 --- !u!4 &146753613
 Transform:
   m_ObjectHideFlags: 0
@@ -969,6 +969,10 @@ PrefabInstance:
     - target: {fileID: 1078188311916773344, guid: 21290ffd0e3f68d49a08ac1b5996be30, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1746464905336097175, guid: 21290ffd0e3f68d49a08ac1b5996be30, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
