@@ -8,9 +8,8 @@ public class SpawnManager : MonoBehaviour
     public GameObject gasoline;
     public GameObject life;
     public GameObject ammo;
+    public GameObject enemy;
 
-    //private Vector3 spawnPosOne = new Vector3(0, 150, 15);
-    //private Vector3 spawnPosTwo = new Vector3(0, 75, 500);
     private float startDelay = 5;
     private float repeatRate = 10;
 
@@ -21,10 +20,10 @@ public class SpawnManager : MonoBehaviour
     private float minZ = 0f;
     private float maxZ = 4000f;
 
-    private float minLY = 20f;
+    /*private float minLY = 20f;
     private float maxLY = 500f;
     private float minLZ = 15f;
-    private float maxLZ = 3000f;
+    private float maxLZ = 3000f;*/
 
     private float minAY = 10f;
     private float maxAY = 400f;
@@ -38,12 +37,13 @@ public class SpawnManager : MonoBehaviour
         InvokeRepeating("SpawnGasoline", startDelay, repeatRate);
         InvokeRepeating("SpawnLife", startDelay, repeatRate);
         InvokeRepeating("SpawnAmmo", startDelay, repeatRate);
+        InvokeRepeating("SpawnEnemy", startDelay, repeatRate);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void SpawnForceFieldOne()
@@ -54,8 +54,8 @@ public class SpawnManager : MonoBehaviour
 
         Vector3 spawnPosOne = new Vector3(randomFOX, randomFOY, randomFOZ);
 
-       Instantiate(forceFieldOne, spawnPosOne, forceFieldOne.transform.rotation);
-    }   
+        Instantiate(forceFieldOne, spawnPosOne, forceFieldOne.transform.rotation);
+    }
 
     void SpawnForceFieldTwo()
     {
@@ -97,6 +97,13 @@ public class SpawnManager : MonoBehaviour
 
         Instantiate(ammo, spawnPosAmmo, ammo.transform.rotation);
     }
-    
-   
+
+    void SpawnEnemy()
+    {
+        float randomEX = Random.Range(minX, maxX);
+        float randomEY = Random.Range(minY, maxY);
+        float randomEZ = Random.Range(minZ, maxZ);
+        Vector3 spawnPosEnemy = new Vector3(randomEX, randomEY, randomEZ);
+        Instantiate(enemy, spawnPosEnemy, enemy.transform.rotation);
+    }
 }
