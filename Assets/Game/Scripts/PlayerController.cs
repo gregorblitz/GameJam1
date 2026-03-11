@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 
 public class PlayerController : MonoBehaviour
@@ -25,8 +26,13 @@ public class PlayerController : MonoBehaviour
     [Header("Disparo")]
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
+    private float fireRate = 2.0f;     // Tiempo entre balas
 
-    public float fireRate = 0.5f;     // Tiempo entre balas
+    [Header("Salud y UI")]
+    public int currentLives = 1;
+    public int maxLives = 5;
+    public TextMeshProUGUI livesText;
+ 
     private float nextFire = 0f;      // Cronómetro interno
     private bool isAttacking = false; // UEVA: Estado del botón
 
@@ -35,6 +41,10 @@ public class PlayerController : MonoBehaviour
     private float currentRoll = 0f;
     private float currentPitch = 0f;
 
+    void Start()
+    {
+            UpdateLivesUI();
+    }
     void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
@@ -86,5 +96,43 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(duration);
         
         fireRate = originalRate; // Al terminar el tiempo, vuelve a la normalidad
+    }
+
+    // Actualizar el texto en pantalla
+    private void UpdateLivesUI()
+    {
+        if (livesText != null)
+        {
+            livesText.text = "Vidas: " + currentLives;
+        }
+    }
+
+    // Llama el PowerUp para dar vida
+    public void AddLife()
+    {
+        if (currentLives < maxLives)
+        {
+            currentLives++;
+            UpdateLivesUI();
+        }
+    }
+    // Quita vidas
+    public void TakeDamage()
+    {
+        currentLives--;
+        UpdateLivesUI();
+
+        if (currentLives <= 0)
+        {
+            GameOver();
+        }
+    }
+
+    // Congela el juego cuando mueres
+    private void GameOver()
+    {
+        Debug.Log("¡Juego Terminado!");
+        Time.timeScale = 0f; // pausa el juego
+        // Espacio para mostrar una pantalla de reinicio
     }
 }
