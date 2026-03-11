@@ -7,32 +7,40 @@ public class AudioManager : MonoBehaviour
     [Header("Música")]
     public AudioClip musicaAmbiente;
     public AudioClip musicaGameOver;
+    [Range(0f, 1f)] public float volumenMusicaAmbiente = 0.5f;
+    [Range(0f, 1f)] public float volumenMusicaGameOver = 0.8f;
 
     [Header("Sonidos del Jugador")]
     public AudioClip sonidoMotor;
     public AudioClip sonidoDisparoNormal;
     public AudioClip sonidoDisparoMetralleta;
+    [Range(0f, 1f)] public float volumenMotor = 0.6f;
+    [Range(0f, 1f)] public float volumenDisparoNormal = 0.7f;
+    [Range(0f, 1f)] public float volumenDisparoMetralleta = 0.7f;
 
     [Header("Sonidos de PowerUps")]
     public AudioClip sonidoAgarrarVida;
     public AudioClip sonidoAgarrarCombustible;
     public AudioClip sonidoAgarrarMunicion;
+    [Range(0f, 1f)] public float volumenAgarrarVida = 1f;
+    [Range(0f, 1f)] public float volumenAgarrarCombustible = 1f;
+    [Range(0f, 1f)] public float volumenAgarrarMunicion = 1f;
 
     [Header("Sonidos de Enemigos")]
     public AudioClip sonidoDestruccionEnemigo;
+    [Range(0f, 1f)] public float volumenDestruccionEnemigo = 1f;
 
     // Sources
-    private AudioSource musicaSource;   // Para música (loop)
-    private AudioSource motorSource;    // Para motor (loop continuo)
-    private AudioSource sfxSource;      // Para efectos de sonido (one-shot)
+    private AudioSource musicaSource;
+    private AudioSource motorSource;
+    private AudioSource sfxSource;
 
     void Awake()
     {
-        // Singleton: solo existe un AudioManager en toda la escena
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Persiste entre escenas
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -40,24 +48,18 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        // Crear los 3 AudioSources
         musicaSource = gameObject.AddComponent<AudioSource>();
         motorSource = gameObject.AddComponent<AudioSource>();
         sfxSource = gameObject.AddComponent<AudioSource>();
 
-        // Configurar música ambiente
-        musicaSource.clip = musicaAmbiente;
         musicaSource.loop = true;
-        musicaSource.volume = 0.5f;
         musicaSource.playOnAwake = false;
 
-        // Configurar motor (loop)
         motorSource.clip = sonidoMotor;
         motorSource.loop = true;
-        motorSource.volume = 0.6f;
+        motorSource.volume = volumenMotor;
         motorSource.playOnAwake = false;
 
-        // Configurar SFX (efectos puntuales)
         sfxSource.loop = false;
         sfxSource.playOnAwake = false;
     }
@@ -74,6 +76,8 @@ public class AudioManager : MonoBehaviour
     {
         if (musicaAmbiente == null) return;
         musicaSource.clip = musicaAmbiente;
+        musicaSource.volume = volumenMusicaAmbiente;
+        musicaSource.loop = true;
         musicaSource.Play();
     }
 
@@ -83,6 +87,7 @@ public class AudioManager : MonoBehaviour
         musicaSource.Stop();
         motorSource.Stop();
         musicaSource.clip = musicaGameOver;
+        musicaSource.volume = volumenMusicaGameOver;
         musicaSource.loop = false;
         musicaSource.Play();
     }
@@ -92,6 +97,7 @@ public class AudioManager : MonoBehaviour
     public void PlayMotor()
     {
         if (sonidoMotor == null) return;
+        motorSource.volume = volumenMotor;
         if (!motorSource.isPlaying)
             motorSource.Play();
     }
@@ -105,43 +111,43 @@ public class AudioManager : MonoBehaviour
 
     public void PlayDisparoNormal()
     {
-        PlaySFX(sonidoDisparoNormal);
+        PlaySFX(sonidoDisparoNormal, volumenDisparoNormal);
     }
 
     public void PlayDisparoMetralleta()
     {
-        PlaySFX(sonidoDisparoMetralleta);
+        PlaySFX(sonidoDisparoMetralleta, volumenDisparoMetralleta);
     }
 
     // ─── POWERUPS ──────────────────────────────────────────
 
     public void PlayAgarrarVida()
     {
-        PlaySFX(sonidoAgarrarVida);
+        PlaySFX(sonidoAgarrarVida, volumenAgarrarVida);
     }
 
     public void PlayAgarrarCombustible()
     {
-        PlaySFX(sonidoAgarrarCombustible);
+        PlaySFX(sonidoAgarrarCombustible, volumenAgarrarCombustible);
     }
 
     public void PlayAgarrarMunicion()
     {
-        PlaySFX(sonidoAgarrarMunicion);
+        PlaySFX(sonidoAgarrarMunicion, volumenAgarrarMunicion);
     }
 
     // ─── ENEMIGOS ──────────────────────────────────────────
 
     public void PlayDestruccionEnemigo()
     {
-        PlaySFX(sonidoDestruccionEnemigo);
+        PlaySFX(sonidoDestruccionEnemigo, volumenDestruccionEnemigo);
     }
 
     // ─── HELPER PRIVADO ────────────────────────────────────
 
-    private void PlaySFX(AudioClip clip)
+    private void PlaySFX(AudioClip clip, float volumen)
     {
         if (clip == null) return;
-        sfxSource.PlayOneShot(clip);
+        sfxSource.PlayOneShot(clip, volumen);
     }
 }

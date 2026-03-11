@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5940554706328711030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 791599598349470768}
+  - component: {fileID: 2730788749355346675}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &791599598349470768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5940554706328711030}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 60.55182, y: 0.14389, z: -2234.8562}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2730788749355346675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5940554706328711030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e015bc18c5cca7a42a45b9982c193e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  musicaAmbiente: {fileID: 8300000, guid: a3cab1fef61a74142bece34380f636eb, type: 3}
+  musicaGameOver: {fileID: 8300000, guid: 19502a46a76a2024bbfee445389308ab, type: 3}
+  volumenMusicaAmbiente: 0.2
+  volumenMusicaGameOver: 1
+  sonidoMotor: {fileID: 8300000, guid: ec96e7f597fd0aa4db98ffa3d1a09b53, type: 3}
+  sonidoDisparoNormal: {fileID: 8300000, guid: 4a097cff117de0f43b62c42a250ce4f2, type: 3}
+  sonidoDisparoMetralleta: {fileID: 8300000, guid: 262f4938e7f66e44abade695f5ebd9f0, type: 3}
+  volumenMotor: 0.882
+  volumenDisparoNormal: 0.603
+  volumenDisparoMetralleta: 0.607
+  sonidoAgarrarVida: {fileID: 8300000, guid: 1af46f75d1106db49be4d722f248d481, type: 3}
+  sonidoAgarrarCombustible: {fileID: 8300000, guid: 7d6065071091f6343b65303950c709df, type: 3}
+  sonidoAgarrarMunicion: {fileID: 8300000, guid: d55ed00cd9b8a194cba55a4d4b31918c, type: 3}
+  volumenAgarrarVida: 1
+  volumenAgarrarCombustible: 1
+  volumenAgarrarMunicion: 1
+  sonidoDestruccionEnemigo: {fileID: 8300000, guid: 212b368a76ba76742af47aa9a65b111e, type: 3}
+  volumenDestruccionEnemigo: 1
