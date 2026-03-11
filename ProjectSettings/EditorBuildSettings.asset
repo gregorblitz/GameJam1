@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Game/Scenes/Menu.unity
     guid: 2193a9cdf340ffa40813d051806733f6
   - enabled: 1
+    path: Assets/Game/Scenes/HowToPlay.unity
+    guid: 3935b077545312947bfd947bfaa2fc34
+  - enabled: 1
     path: Assets/Game/Scenes/GameAirplane.unity
     guid: cf2e3a46b8c2efe4ea4ab5cfa7b6ecf7
   m_configObjects: {}
