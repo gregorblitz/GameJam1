@@ -25,8 +25,8 @@ public class PresentacionEquipo : MonoBehaviour
     public float tiempoFade = 0.6f;
 
     private string[] titulos = {
-        "Christian Nuñez",
-        "Ricardo Patiño",
+        "Christian Nunez",
+        "Ricardo Patino",
         "Santiago Cortazar",
         "Holmes Garces",
         

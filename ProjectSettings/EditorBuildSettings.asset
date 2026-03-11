@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Game/Scenes/HowToPlay.unity
     guid: 3935b077545312947bfd947bfaa2fc34
   - enabled: 1
+    path: Assets/Game/Scenes/Presentacion.unity
+    guid: 5df9a153d2a7c494ebb10feeaa78c473
+  - enabled: 1
     path: Assets/Game/Scenes/GameAirplane.unity
     guid: cf2e3a46b8c2efe4ea4ab5cfa7b6ecf7
   m_configObjects: {}
