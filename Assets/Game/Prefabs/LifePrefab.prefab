@@ -10,7 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5b4a4f589b2a84e488748eb81f4a6e0e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 100
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5b4a4f589b2a84e488748eb81f4a6e0e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5b4a4f589b2a84e488748eb81f4a6e0e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b4a4f589b2a84e488748eb81f4a6e0e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -70,6 +78,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5b4a4f589b2a84e488748eb81f4a6e0e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8243742084737545198}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5b4a4f589b2a84e488748eb81f4a6e0e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9116510470454224313}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5b4a4f589b2a84e488748eb81f4a6e0e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7129003792482966531}
   m_SourcePrefab: {fileID: 100100000, guid: 5b4a4f589b2a84e488748eb81f4a6e0e, type: 3}
 --- !u!1 &8616871875778493580 stripped
 GameObject:
@@ -108,5 +122,45 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.02, y: 0.005999999, z: 0.019495334}
-  m_Center: {x: 0, y: 0, z: 0.009747667}
+  m_Size: {x: 2.13, y: 0.77304703, z: 2.0028448}
+  m_Center: {x: 0, y: 0.015508355, z: 0.9768496}
+--- !u!114 &9116510470454224313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616871875778493580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 710ec955dc511bf48840e9b9c0e9fa45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LifePickup
+  lifeEffect: {fileID: 3280519133390621005, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
+--- !u!54 &7129003792482966531
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616871875778493580}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

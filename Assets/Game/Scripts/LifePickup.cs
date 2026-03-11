@@ -8,10 +8,11 @@ public class LifePickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Instancia el efecto en la posición del objeto
             if (lifeEffect != null)
-                Instantiate(lifeEffect, transform.position, Quaternion.identity);
-
+            {
+                Vector3 spawnPos = transform.position; // Guarda posición antes de destruir
+                Instantiate(lifeEffect, spawnPos, Quaternion.identity);
+            }
             Destroy(gameObject);
         }
     }
