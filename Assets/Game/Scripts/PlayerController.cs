@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class PlayerController : MonoBehaviour
 {
     [Header("Movimiento")]
@@ -25,6 +26,10 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
 
+    public float fireRate = 0.5f;     // Tiempo entre balas
+    private float nextFire = 0f;      // Cronómetro interno
+    private bool isAttacking = false; // UEVA: Estado del botón
+
     private Vector2 moveInput;
     private Vector2 smoothedInput;
     private float currentRoll = 0f;
@@ -37,10 +42,8 @@ public class PlayerController : MonoBehaviour
 
     void OnAttack(InputValue value)
     {
-        if (value.isPressed)
-        {
-            Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
-        }
+        // Esto se vuelve true al presionar y false al soltar
+        isAttacking = value.isPressed;
     }
 
     void Update()
@@ -61,5 +64,27 @@ public class PlayerController : MonoBehaviour
         currentPitch = Mathf.Lerp(currentPitch, targetPitch, Time.deltaTime * pitchSmoothSpeed);
 
         transform.rotation = Quaternion.Euler(-90f + currentPitch, 180f, currentRoll);
+
+        // Si esta oprimido boton (atacando) y ya paso el tiempo de espera (fireRate)
+        if (isAttacking && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate; // Programamos el siguiente disparo
+            Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+        }
+    }
+
+    public void ActivateAmmoPowerUp(float fastRate, float duration)
+    {
+        StartCoroutine(AmmoBoostRoutine(fastRate, duration));
+    }
+
+    private System.Collections.IEnumerator AmmoBoostRoutine(float fastRate, float duration)
+    {
+        float originalRate = fireRate;
+        fireRate = fastRate; // aumenta la cadencia de disparo
+        
+        yield return new WaitForSeconds(duration);
+        
+        fireRate = originalRate; // Al terminar el tiempo, vuelve a la normalidad
     }
 }
