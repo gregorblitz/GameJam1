@@ -103,7 +103,7 @@ Material:
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _AtmosphereThickness: 0.41458464
+    - _AtmosphereThickness: 0.47248977
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -120,7 +120,7 @@ Material:
     - _EnableFog: 0
     - _EnableRotation: 0
     - _EnvironmentReflections: 1
-    - _Exposure: 0.38528848
+    - _Exposure: 0.47576523
     - _FogFill: 0.5
     - _FogHeight: 1
     - _FogIntensity: 1
@@ -157,7 +157,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundColor: {r: 0.509434, g: 0.24269532, b: 0.10332859, a: 1}
-    - _SkyTint: {r: 0.14875078, g: 0.20239694, b: 0.32677233, a: 1}
+    - _SkyTint: {r: 0.18349385, g: 0.2516163, b: 0.39336324, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_BuildTextureStacks: []
