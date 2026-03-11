@@ -277,6 +277,7 @@ MonoBehaviour:
   forceFieldTwo: {fileID: 172891398787535014, guid: 3bab98ac3f2930f4e887658c37fa00a7, type: 3}
   gasoline: {fileID: 3035293199224184206, guid: 5bdb0c81d5d6ae647b728452664a9546, type: 3}
   life: {fileID: 8616871875778493580, guid: 644c82e0979ab9340b1f06a5c7f0bc86, type: 3}
+  ammo: {fileID: 198976, guid: dbe398fbe3adebc4484ea50382e51ea7, type: 3}
 --- !u!4 &146753613
 Transform:
   m_ObjectHideFlags: 0
@@ -1390,8 +1391,9 @@ MonoBehaviour:
   maxY: 600
   minX: -150
   maxX: 150
-  bulletPrefab: {fileID: 4709689573197116424, guid: 49c8b8802f6b76345ad0c0e9e3f54b3c, type: 3}
+  bulletPrefab: {fileID: 6473421366803564595, guid: bca2b707c803fe8448738da0944b6a0a, type: 3}
   bulletSpawn: {fileID: 797462847243196573}
+  fireRate: 2
 --- !u!4 &6030639865588151397
 Transform:
   m_ObjectHideFlags: 0

@@ -553,7 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3bfae57b1bbc46489d8059bfc937380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AmmoPowerUp
-  fastFireRate: 0.5
+  fastFireRate: 0.1
   duration: 5
 --- !u!65 &1341771044448372943
 BoxCollider:
