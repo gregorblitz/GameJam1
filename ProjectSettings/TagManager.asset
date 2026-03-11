@@ -9,6 +9,7 @@ TagManager:
   - Enemigo
   - Gas
   - Life
+  - Bullet
   layers:
   - Default
   - TransparentFX

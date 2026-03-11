@@ -1089,7 +1089,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lives: '
+  m_text: 'Lives:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a5e18a919b3eb6244b2a43d0cb90682d, type: 2}
   m_sharedMaterial: {fileID: -7033178223993287674, guid: a5e18a919b3eb6244b2a43d0cb90682d, type: 2}
@@ -1789,11 +1789,12 @@ MonoBehaviour:
   maxY: 600
   minX: -150
   maxX: 150
-  bulletPrefab: {fileID: 6473421366803564595, guid: bca2b707c803fe8448738da0944b6a0a, type: 3}
-  bulletSpawn: {fileID: 797462847243196573}
   currentLives: 1
   maxLives: 5
   livesText: {fileID: 1630135927}
+  bulletPrefab: {fileID: 6473421366803564595, guid: bca2b707c803fe8448738da0944b6a0a, type: 3}
+  bulletSpawn: {fileID: 797462847243196573}
+  fireRate: 2
 --- !u!4 &6030639865588151397
 Transform:
   m_ObjectHideFlags: 0

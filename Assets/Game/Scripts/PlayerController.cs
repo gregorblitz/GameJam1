@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using TMPro;
-
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,18 +23,21 @@ public class PlayerController : MonoBehaviour
     public float minX = -150f;
     public float maxX = 150f;
 
-    [Header("Disparo")]
-    public GameObject bulletPrefab;
-    public Transform bulletSpawn;
-    private float fireRate = 2.0f;     // Tiempo entre balas
-
     [Header("Salud y UI")]
     public int currentLives = 1;
     public int maxLives = 5;
     public TextMeshProUGUI livesText;
- 
-    private float nextFire = 0f;      // Cronómetro interno
-    private bool isAttacking = false; // UEVA: Estado del botón
+
+    [Header("Disparo")]
+    public GameObject bulletPrefab;
+    public Transform bulletSpawn;
+
+    public float fireRate = 0.5f;
+    private float nextFire = 0f;
+    private bool isAttacking = false;
+
+    // Umbral: si fireRate es menor a este valor se considera metralleta
+    private float metralletaThreshold = 0.2f;
 
     private Vector2 moveInput;
     private Vector2 smoothedInput;
@@ -44,9 +47,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         UpdateLivesUI();
-    }
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    } 
     void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
@@ -54,7 +57,6 @@ public class PlayerController : MonoBehaviour
 
     void OnAttack(InputValue value)
     {
-        // Esto se vuelve true al presionar y false al soltar
         isAttacking = value.isPressed;
     }
 
@@ -77,11 +79,19 @@ public class PlayerController : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(-90f + currentPitch, 180f, currentRoll);
 
-        // Si esta oprimido boton (atacando) y ya paso el tiempo de espera (fireRate)
         if (isAttacking && Time.time > nextFire)
         {
-            nextFire = Time.time + fireRate; // Programamos el siguiente disparo
+            nextFire = Time.time + fireRate;
             Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+
+            // Sonido: metralleta si fireRate es bajo, normal si es alto
+            if (AudioManager.Instance != null)
+            {
+                if (fireRate < metralletaThreshold)
+                    AudioManager.Instance.PlayDisparoMetralleta();
+                else
+                    AudioManager.Instance.PlayDisparoNormal();
+            }
         }
     }
 
@@ -93,14 +103,14 @@ public class PlayerController : MonoBehaviour
     private System.Collections.IEnumerator AmmoBoostRoutine(float fastRate, float duration)
     {
         float originalRate = fireRate;
-        fireRate = fastRate; // aumenta la cadencia de disparo
-        
+        fireRate = fastRate;
+
         yield return new WaitForSeconds(duration);
-        
-        fireRate = originalRate; // Al terminar el tiempo, vuelve a la normalidad
+
+        fireRate = originalRate;
     }
 
-    // Actualizar el texto en pantalla
+        // Actualizar el texto en pantalla
     private void UpdateLivesUI()
     {
         if (livesText != null)
@@ -137,8 +147,7 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 0f; // pausa el juego
         // Espacio para mostrar una pantalla de reinicio
     }*/
-
-    void OnTriggerEnter(Collider other)
+        void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Obstaculo"))
         {

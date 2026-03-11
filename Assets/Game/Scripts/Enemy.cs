@@ -16,8 +16,12 @@ public class Enemy : MonoBehaviour
 
             if (hitCount >= hitsToDestroy)
             {
+                // Sonido destruccion enemigo
+                if (AudioManager.Instance != null)
+                    AudioManager.Instance.PlayDestruccionEnemigo();
+
                 Debug.Log("¡Enemigo destruido!");
-                Destroy(gameObject); // Destruye al enemigo
+                Destroy(gameObject);
             }
         }
     }
