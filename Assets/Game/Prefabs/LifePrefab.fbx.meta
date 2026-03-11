@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Game/Prefabs/enemy/invx.fbx.meta
 guid: 5c54f2eb9487c2a47b3548ba22d2c9a2
-========
-guid: 5b4a4f589b2a84e488748eb81f4a6e0e
->>>>>>>> origin/World-Desing:Assets/Game/Prefabs/LifePrefab.fbx.meta
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -72,7 +68,7 @@ ModelImporter:
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
-    useFileScale: 0
+    useFileScale: 1
     strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60

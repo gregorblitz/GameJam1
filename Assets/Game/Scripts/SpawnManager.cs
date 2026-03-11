@@ -22,10 +22,10 @@ public class SpawnManager : MonoBehaviour
     private float minZ = 0f;
     private float maxZ = 4000f;
 
-    private float minLY = 20f;
+    /* private float minLY = 20f; 
     private float maxLY = 500f;
     private float minLZ = 15f;
-    private float maxLZ = 3000f;
+    private float maxLZ = 3000f;*/
 
     private float minAY = 10f;
     private float maxAY = 400f;
